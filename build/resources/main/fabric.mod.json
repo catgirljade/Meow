@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "id": "meow",
+  "version": "1.0-SNAPSHOT",
+  "name": "Meow",
+  "description": "",
+  "authors": [],
+  "contact": {
+    "repo": "https://github.com/selphie/Meow"
+  },
+  "license": "All-Rights-Reserved",
+  "icon": "assets/meow/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "org.mhealth.meow.client.MeowClient"
+    ],
+    "main": [
+      "org.mhealth.meow.Meow"
+    ]
+  },
+  "mixins": [
+    "meow.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.16.9",
+    "fabric": "*",
+    "minecraft": "1.20.1"
+  },
+  "custom": {
+    "fabric-renderer-api-v1:contains_renderer": true
+  }
+}
