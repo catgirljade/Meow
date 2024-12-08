@@ -7,23 +7,25 @@ import org.joml.Vector3f;
 
 @Config(name = "hiteffects")
 public class ModConfig implements ConfigData {
+	// spacing in function = this.spacing / 100
+	@ConfigEntry.Gui.Tooltip()
+	public double spacing = 0.1;
 	public boolean hit_effect = true;
 	public boolean kill_effect = true;
+
+	public float hit_effect_volume = 1;
+	public float kill_effect_volume = 1;
 	@ConfigEntry.Category("hit_effect_colour")
-	@ConfigEntry.Gui.Tooltip()
 	@ConfigEntry.Gui.CollapsibleObject
 	public Colour hit_colours_initial = new Colour();
 	@ConfigEntry.Category("hit_effect_colour")
-	@ConfigEntry.Gui.Tooltip()
 	@ConfigEntry.Gui.CollapsibleObject
 	public Colour hit_colours_final = new Colour();
 	@ConfigEntry.Category("kill_effect_colour")
-	@ConfigEntry.Gui.Tooltip()
 	@ConfigEntry.Gui.CollapsibleObject
 	public Colour kill_colours_initial = new Colour();
 
 	@ConfigEntry.Category("kill_effect_colour")
-	@ConfigEntry.Gui.Tooltip()
 	@ConfigEntry.Gui.CollapsibleObject
 	public Colour kill_colours_final = new Colour();
 
@@ -38,6 +40,9 @@ public class ModConfig implements ConfigData {
 			colour.g = clamp(colour.g, 0, 1);
 			colour.b = clamp(colour.b, 0, 1);
 		}
+		hit_effect_volume = clamp(hit_effect_volume, 0, 1);
+		kill_effect_volume = clamp(kill_effect_volume, 0, 1);
+		spacing = clamp((float) spacing, 0, 1);
 	}
 
 	public Vector3f colourToVec(Colour colour) {
@@ -58,7 +63,6 @@ public class ModConfig implements ConfigData {
 			r = clamp(r, 0, 1);
 			g = clamp(g, 0, 1);
 			b = clamp(b, 0, 1);
-
 		}
 	}
 

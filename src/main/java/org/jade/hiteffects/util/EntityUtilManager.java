@@ -9,7 +9,7 @@ import org.jade.hiteffects.HitEffectClient;
 public class EntityUtilManager {
 	static Int2ObjectOpenHashMap<EntityUtils> entityUtilHashMap = new Int2ObjectOpenHashMap<>();
 
-	public static void addEntity(LivingEntity entity) {
+	public static void handleEntity(LivingEntity entity) {
 		// check if not in already
 		entityUtilHashMap.compute(entity.getId(), (key, value) -> {
 			if (Math.abs(entity.getX() - HitEffectClient.mc.player.position().x) > HitEffectClient.mc.options.renderDistance().get() * 16 ||
@@ -19,21 +19,16 @@ public class EntityUtilManager {
 			if (entity.equals(HitEffectClient.mc.player)){
 				return null;
 			}
-			EntityUtils newEntityUtils = new EntityUtils(entity);
-			return newEntityUtils;
+			return value == null ? new EntityUtils(entity) : value;
 		});
 	}
 
 	public static void tick() {
 		ModConfig config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
-		if (!HitEffectClient.mc.isPaused() && HitEffectClient.mc.level != null) {
+		if (!HitEffectClient.mc.isPaused() && HitEffectClient.mc.level != null && config.kill_effect) {
 			for (ObjectIterator<EntityUtils> it = entityUtilHashMap.values().iterator(); it.hasNext(); ) {
 				EntityUtils entityUtils = it.next();
-				if (entityUtils.isValid() && config.kill_effect) {
-					entityUtils.tick();
-					continue;
-				}
-				it.remove();
+				entityUtils.tick();
 			}
 		}
 	}

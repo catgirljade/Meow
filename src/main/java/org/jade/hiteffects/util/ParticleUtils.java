@@ -8,16 +8,15 @@ import java.util.List;
 import java.util.concurrent.Callable;
 
 public class ParticleUtils {
-	static List<Callable> current = new ArrayList<>();
+	static List<Callable<Boolean>> current = new ArrayList<>();
 
 	public static void create_arc(CleaveAnimation func, double radius, int startingDegrees, int endingDegrees, float angle, float pitch, float yaw, double spacing, int arcInc, int rings) {
 		double radiusInc = (Math.PI / (endingDegrees - startingDegrees));
 
-		double mDegrees = startingDegrees;
 		double mPI = 0;
 
 		Vec3 vec;
-		for (double d = mDegrees; d < mDegrees + arcInc; d += spacing * 90 / radius) {
+		for (double d = startingDegrees; d < (double) startingDegrees + arcInc; d += spacing * 90 / radius) {
 
 			for (int i = 0; i < rings; i++) {
 				double radian1 = Math.toRadians(d);
@@ -61,7 +60,7 @@ public class ParticleUtils {
 							1D - (point.distanceTo(Vec3.ZERO) / length), (double) (i + 1) / points.size(), middle);
 			}
 		} else {
-			current.add(new Callable() {
+			current.add(new Callable<>() {
 
 				final int mPointsPerTick = (int) (points.size() * (1D / duration));
 				int mT = 0;
@@ -69,7 +68,6 @@ public class ParticleUtils {
 
 				@Override
 				public Boolean call() {
-					System.out.println("Meow");
 					for (int i = mPointsPerTick * mT; i < Math.min(points.size(), mPointsPerTick * (mT + 1)); i++) {
 						Vec3 point = points.get(i);
 						boolean middle = !mMidReached && i == points.size() / 2;
@@ -91,10 +89,10 @@ public class ParticleUtils {
 	}
 
 	public static void tick() {
-		for (Iterator<Callable> callableIterator = current.iterator(); callableIterator.hasNext(); ) {
-			Callable callable = callableIterator.next();
+		for (Iterator<Callable<Boolean>> callableIterator = current.iterator(); callableIterator.hasNext(); ) {
+			Callable<Boolean> callable = callableIterator.next();
 			try {
-				boolean result = (boolean) callable.call();
+				boolean result = callable.call();
 				if (result){
 					callableIterator.remove();
 				}

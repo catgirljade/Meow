@@ -4,6 +4,10 @@
   "text.autoconfig.hiteffects.category.kill_effect_colour" : "Kill Effect Colours",
   "text.autoconfig.hiteffects.option.hit_effect" : "Hit Effect Enabled",
   "text.autoconfig.hiteffects.option.kill_effect" : "Kill Effect Enabled",
+  "text.autoconfig.hiteffects.option.hit_effect_volume" : "Hit Effect Volume Multiplier",
+  "text.autoconfig.hiteffects.option.kill_effect_volume" : "Kill Effect Volume Multiplier",
+  "text.autoconfig.hiteffects.option.spacing" : "Particle Spacing (Between 0 and 1)",
+  "text.autoconfig.hiteffects.option.spacing.@Tooltip" : "Spacing Between each particle used to draw the slash\n(Lower values give more concentrated particles, higher values give less concentrated particles)",
 
   "text.autoconfig.hiteffects.option.hit_colours_initial" : "Initial Hit Colour",
   "text.autoconfig.hiteffects.option.hit_colours_final" : "Final Hit Colour",
@@ -16,6 +20,9 @@
 
   "text.autoconfig.hiteffects.option.hit_colours_initial.b" : "Initial Hit Colour Blue",
   "text.autoconfig.hiteffects.option.hit_colours_final.b" : "Final Hit Colour Blue",
+
+  "text.autoconfig.hiteffects.option.kill_colours_initial" : "Initial Kill Colour",
+  "text.autoconfig.hiteffects.option.kill_colours_final" : "Final Kill Colour",
 
 
   "text.autoconfig.hiteffects.option.kill_colours_initial.r" : "Initial Kill Colour Red",
