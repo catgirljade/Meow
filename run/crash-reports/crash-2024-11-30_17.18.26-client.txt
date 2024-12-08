@@ -7,7 +7,7 @@ Description: Unexpected error
 java.lang.NullPointerException: Cannot invoke "net.minecraft.client.multiplayer.ClientLevel.getChunk(int, int)" because "level" is null
 	at knot//org.mhealth.meow.client.util.LevelUtils.getChests(LevelUtils.java:19)
 	at knot//org.mhealth.meow.client.features.ChestEsp.updateChests(ChestEsp.java:24)
-	at knot//org.mhealth.meow.client.MeowClient.lambda$onInitializeClient$0(MeowClient.java:21)
+	at knot//org.jade.hiteffects.MeowClient.lambda$onInitializeClient$0(MeowClient.java:21)
 	at knot//net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents.lambda$static$2(ClientTickEvents.java:43)
 	at knot//net.minecraft.client.Minecraft.handler$zgi000$fabric-lifecycle-events-v1$onEndTick(Minecraft.java:4234)
 	at knot//net.minecraft.client.Minecraft.tick(Minecraft.java:1695)
@@ -28,7 +28,7 @@ Thread: Render thread
 Stacktrace:
 	at knot//org.mhealth.meow.client.util.LevelUtils.getChests(LevelUtils.java:19)
 	at knot//org.mhealth.meow.client.features.ChestEsp.updateChests(ChestEsp.java:24)
-	at knot//org.mhealth.meow.client.MeowClient.lambda$onInitializeClient$0(MeowClient.java:21)
+	at knot//org.jade.hiteffects.MeowClient.lambda$onInitializeClient$0(MeowClient.java:21)
 	at knot//net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents.lambda$static$2(ClientTickEvents.java:43)
 	at knot//net.minecraft.client.Minecraft.handler$zgi000$fabric-lifecycle-events-v1$onEndTick(Minecraft.java:4234)
 

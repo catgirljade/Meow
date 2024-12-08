@@ -1,0 +1,29 @@
+{
+  "text.autoconfig.hiteffects.category.default" : "Features",
+  "text.autoconfig.hiteffects.category.hit_effect_colour" : "Hit Effect Colours",
+  "text.autoconfig.hiteffects.category.kill_effect_colour" : "Kill Effect Colours",
+  "text.autoconfig.hiteffects.option.hit_effect" : "Hit Effect Enabled",
+  "text.autoconfig.hiteffects.option.kill_effect" : "Kill Effect Enabled",
+
+  "text.autoconfig.hiteffects.option.hit_colours_initial" : "Initial Hit Colour",
+  "text.autoconfig.hiteffects.option.hit_colours_final" : "Final Hit Colour",
+
+  "text.autoconfig.hiteffects.option.hit_colours_initial.r" : "Initial Hit Colour Red",
+  "text.autoconfig.hiteffects.option.hit_colours_final.r" : "Final Hit Colour Red",
+
+  "text.autoconfig.hiteffects.option.hit_colours_initial.g" : "Initial Hit Colour Green",
+  "text.autoconfig.hiteffects.option.hit_colours_final.g" : "Final Hit Colour Green",
+
+  "text.autoconfig.hiteffects.option.hit_colours_initial.b" : "Initial Hit Colour Blue",
+  "text.autoconfig.hiteffects.option.hit_colours_final.b" : "Final Hit Colour Blue",
+
+
+  "text.autoconfig.hiteffects.option.kill_colours_initial.r" : "Initial Kill Colour Red",
+  "text.autoconfig.hiteffects.option.kill_colours_final.r" : "Final Kill Colour Red",
+
+  "text.autoconfig.hiteffects.option.kill_colours_initial.g" : "Initial Kill Colour Green",
+  "text.autoconfig.hiteffects.option.kill_colours_final.g" : "Final Kill Colour Green",
+
+  "text.autoconfig.hiteffects.option.kill_colours_initial.b" : "Initial Kill Colour Blue",
+  "text.autoconfig.hiteffects.option.kill_colours_final.b" : "Final Kill Colour Blue"
+}

@@ -4,10 +4,10 @@
 Time: 2024-11-30 18:06:38
 Description: Unexpected error
 
-java.lang.NullPointerException: Cannot invoke "net.minecraft.client.player.LocalPlayer.chunkPosition()" because "org.mhealth.meow.client.MeowClient.mc.player" is null
+java.lang.NullPointerException: Cannot invoke "net.minecraft.client.player.LocalPlayer.chunkPosition()" because "org.jade.hiteffects.MeowClient.mc.player" is null
 	at knot//org.mhealth.meow.client.util.LevelUtils.getChests(LevelUtils.java:20)
 	at knot//org.mhealth.meow.client.features.ChestEsp.updateChests(ChestEsp.java:27)
-	at knot//org.mhealth.meow.client.MeowClient.lambda$onInitializeClient$0(MeowClient.java:29)
+	at knot//org.jade.hiteffects.MeowClient.lambda$onInitializeClient$0(MeowClient.java:29)
 	at knot//net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents.lambda$static$2(ClientTickEvents.java:43)
 	at knot//net.minecraft.client.Minecraft.handler$zzp000$fabric-lifecycle-events-v1$onEndTick(Minecraft.java:2734)
 	at knot//net.minecraft.client.Minecraft.tick(Minecraft.java:1695)
@@ -28,7 +28,7 @@ Thread: Render thread
 Stacktrace:
 	at knot//org.mhealth.meow.client.util.LevelUtils.getChests(LevelUtils.java:20)
 	at knot//org.mhealth.meow.client.features.ChestEsp.updateChests(ChestEsp.java:27)
-	at knot//org.mhealth.meow.client.MeowClient.lambda$onInitializeClient$0(MeowClient.java:29)
+	at knot//org.jade.hiteffects.MeowClient.lambda$onInitializeClient$0(MeowClient.java:29)
 	at knot//net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents.lambda$static$2(ClientTickEvents.java:43)
 	at knot//net.minecraft.client.Minecraft.handler$zzp000$fabric-lifecycle-events-v1$onEndTick(Minecraft.java:2734)
 

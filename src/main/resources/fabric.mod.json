@@ -1,23 +1,22 @@
 {
   "schemaVersion": 1,
-  "id": "meow",
+  "id": "hiteffects",
   "version": "${version}",
-  "name": "Meow",
+  "name": "Jade's Hit Effects",
   "description": "",
   "authors": [],
   "contact": {
     "repo": "https://github.com/selphie/Meow"
   },
   "license": "All-Rights-Reserved",
-  "icon": "assets/meow/icon.png",
+  "icon": "assets/hiteffects/textures/icon.png",
   "environment": "*",
   "entrypoints": {
     "client": [
-      "org.mhealth.meow.client.MeowClient"
+      "org.jade.hiteffects.HitEffectClient"
     ],
-    "main": [
-      "org.mhealth.meow.Meow"
-    ]
+    "modmenu": [ "org.jade.hiteffects.util.ModMenuIntegration" ]
+
   },
   "mixins": [
     "meow.mixins.json"
@@ -28,6 +27,8 @@
     "minecraft": "${minecraft_version}"
   },
   "custom": {
-    "fabric-renderer-api-v1:contains_renderer": true
+    "fabric-renderer-api-v1:contains_renderer": true,
+    "modmenu": {
+    }
   }
 }

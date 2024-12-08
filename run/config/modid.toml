@@ -1,0 +1,22 @@
+hit_effect = true
+kill_effect = true
+
+[hit_colours_initial]
+r = 1.0
+g = 1.0
+b = 1.0
+
+[hit_colours_final]
+r = 1.0
+g = 1.0
+b = 1.0
+
+[kill_colours_intial]
+r = 1.0
+g = 1.0
+b = 1.0
+
+[kill_colours_final]
+r = 1.0
+g = 1.0
+b = 1.0
