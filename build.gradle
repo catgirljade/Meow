@@ -21,6 +21,11 @@ repositories {
         url = "https://maven.terraformersmc.com/releases"
     }
     maven { url "https://maven.shedaniel.me/" }
+
+    maven{
+        name = "Nucleoid"
+        url = "https://maven.nucleoid.xyz/"w
+    }
 }
 
 dependencies {
@@ -29,7 +34,7 @@ dependencies {
 //    mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
     mappings loom.layered() {
         officialMojangMappings()
-        parchment("org.parchmentmc.data:parchment-1.20.1:2023.09.03@zip")
+        parchment("org.parchmentmc.data:parchment-1.20.4:2024.04.14@zip")
     }
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
