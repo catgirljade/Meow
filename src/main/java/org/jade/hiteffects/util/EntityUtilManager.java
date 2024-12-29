@@ -18,7 +18,7 @@ public class EntityUtilManager {
 			if (entity.equals(HitEffectClient.mc.player)){
 				return null;
 			}
-			if (value != null && !value.entity.refersTo(entity)){
+			if (value == null && entity.getHealth() <= 0.0 || value != null && value.died){
 				return null;
 			}
 			return value == null ? new EntityUtils(entity) : value;
@@ -26,6 +26,7 @@ public class EntityUtilManager {
 	}
 
 	public static void tick() {
+		System.out.println(entityUtilHashMap.size());
 		ModConfig config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
 		if (!HitEffectClient.mc.isPaused() && HitEffectClient.mc.level != null && config.kill_effect) {
 			for (EntityUtils entityUtils : entityUtilHashMap.values()) {

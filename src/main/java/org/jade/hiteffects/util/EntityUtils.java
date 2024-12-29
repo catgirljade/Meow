@@ -13,9 +13,11 @@ public class EntityUtils {
 		this.entity = new WeakReference<>(entity);
 	}
 
+	boolean died = false;
 	public void tick(){
-		if (entity != null && !entity.get().isRemoved() && entity.get().getHealth() <= 0){
+		if (!died && entity.get() != null && !entity.get().isRemoved() && entity.get().getHealth() <= 0){
 			onDeath();
+			died = true;
 		}
 	}
 

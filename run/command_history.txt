@@ -1,0 +1,13 @@
+/give @p minecraft:repeating_command_block
+/kill @e[type= minecraft:pig]
+/tick freeze
+/kill @e[type= minecraft:pig]
+/setblock ~ ~ ~ air
+/tick freeze
+/tick unfreeze
+/kill @e[type=minecraft:item]
+/kill @e[type= minecraft:pig]
+/kill @e[type=minecraft:item]
+/kill @e[type= minecraft:pig]
+/kill @e[type=minecraft:item]
+/kill @e[type= minecraft:pig]
