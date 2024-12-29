@@ -47,15 +47,17 @@ public class OnHitEffect {
 		BlockPos pos = new BlockPos(new Vec3i((int) entity.getX(), (int) entity.getY(), (int) entity.getZ()));
 		ModConfig config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
 
-		world.playSound(player, pos, SoundEvents.CHAIN_FALL, SoundSource.PLAYERS, 0.8f * config.hit_effect_volume, 1.6f);
-		world.playSound(player, pos, SoundEvents.RESPAWN_ANCHOR_DEPLETE.value(), SoundSource.PLAYERS, 0.3f, TRIDENT_PITCH[combo]);
-		world.playSound(player, pos, SoundEvents.PLAYER_ATTACK_CRIT, SoundSource.PLAYERS, 1 * config.hit_effect_volume, SWEEP_PITCH[combo]);
-		world.playSound(player, pos, SoundEvents.TRIDENT_THROW, SoundSource.PLAYERS, 0.4f * config.hit_effect_volume, TRIDENT_PITCH[combo]);
-		world.playSound(player, pos, SoundEvents.TRIDENT_HIT, SoundSource.PLAYERS, 0.7f * config.hit_effect_volume, 1.8f);
-		world.playSound(player, pos, SoundEvents.TRIDENT_RETURN, SoundSource.PLAYERS, 1 * config.hit_effect_volume, 1.0f);
-		if (crit) {
-			world.playSound(player, pos, SoundEvents.WITHER_SHOOT, SoundSource.PLAYERS, 0.4f * config.hit_effect_volume, 1.5f);
-			world.playSound(player, pos, SoundEvents.TRIDENT_RIPTIDE_3, SoundSource.PLAYERS, 0.5f * config.hit_effect_volume, 2.0f);
+		if (config.hit_effect_volume > 0) {
+			world.playSound(player, pos, SoundEvents.CHAIN_FALL, SoundSource.PLAYERS, 0.8f * config.hit_effect_volume, 1.6f);
+			world.playSound(player, pos, SoundEvents.RESPAWN_ANCHOR_DEPLETE.value(), SoundSource.PLAYERS, 0.3f * config.hit_effect_volume, TRIDENT_PITCH[combo]);
+			world.playSound(player, pos, SoundEvents.PLAYER_ATTACK_CRIT, SoundSource.PLAYERS, 1 * config.hit_effect_volume, SWEEP_PITCH[combo]);
+			world.playSound(player, pos, SoundEvents.TRIDENT_THROW, SoundSource.PLAYERS, 0.4f * config.hit_effect_volume, TRIDENT_PITCH[combo]);
+			world.playSound(player, pos, SoundEvents.TRIDENT_HIT, SoundSource.PLAYERS, 0.7f * config.hit_effect_volume, 1.8f);
+			world.playSound(player, pos, SoundEvents.TRIDENT_RETURN, SoundSource.PLAYERS, 1 * config.hit_effect_volume, 1.0f);
+			if (crit) {
+				world.playSound(player, pos, SoundEvents.WITHER_SHOOT, SoundSource.PLAYERS, 0.4f * config.hit_effect_volume, 1.5f);
+				world.playSound(player, pos, SoundEvents.TRIDENT_RIPTIDE_3, SoundSource.PLAYERS, 0.5f * config.hit_effect_volume, 2.0f);
+			}
 		}
 		Vec3 eye_pos = player.getEyePosition();
 
@@ -72,7 +74,7 @@ public class OnHitEffect {
 
 	private InteractionResult interact(Player mplayer, Level mworld, InteractionHand mhand, Entity mentity, @Nullable EntityHitResult mhitResult) {
 		ModConfig config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
-		if (!config.hit_effect){
+		if (!config.hit_effect) {
 			return InteractionResult.PASS;
 		}
 		this.entity = mentity;
