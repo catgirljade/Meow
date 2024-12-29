@@ -3,21 +3,23 @@ package org.jade.hiteffects.util;
 import net.minecraft.world.entity.LivingEntity;
 import org.jade.hiteffects.features.OnDeathEffect;
 
+import java.lang.ref.WeakReference;
+import java.util.Objects;
+
 public class EntityUtils {
-	LivingEntity entity;
+	WeakReference<LivingEntity> entity;
 
 	EntityUtils(LivingEntity entity){
-		this.entity = entity;
+		this.entity = new WeakReference<>(entity);
 	}
 
 	public void tick(){
-		if (entity != null && !entity.isRemoved() && entity.getHealth() <= 0){
+		if (entity != null && !entity.get().isRemoved() && entity.get().getHealth() <= 0){
 			onDeath();
-			entity = null;
 		}
 	}
 
 	void onDeath(){
-		OnDeathEffect.createEffect(entity);
+		OnDeathEffect.createEffect(Objects.requireNonNull(entity.get()));
 	}
 }

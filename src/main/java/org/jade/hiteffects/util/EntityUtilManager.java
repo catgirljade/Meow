@@ -1,7 +1,6 @@
 package org.jade.hiteffects.util;
 
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
 import me.shedaniel.autoconfig.AutoConfig;
 import net.minecraft.world.entity.LivingEntity;
 import org.jade.hiteffects.HitEffectClient;
@@ -19,6 +18,9 @@ public class EntityUtilManager {
 			if (entity.equals(HitEffectClient.mc.player)){
 				return null;
 			}
+			if (value != null && !value.entity.refersTo(entity)){
+				return null;
+			}
 			return value == null ? new EntityUtils(entity) : value;
 		});
 	}
@@ -26,8 +28,7 @@ public class EntityUtilManager {
 	public static void tick() {
 		ModConfig config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
 		if (!HitEffectClient.mc.isPaused() && HitEffectClient.mc.level != null && config.kill_effect) {
-			for (ObjectIterator<EntityUtils> it = entityUtilHashMap.values().iterator(); it.hasNext(); ) {
-				EntityUtils entityUtils = it.next();
+			for (EntityUtils entityUtils : entityUtilHashMap.values()) {
 				entityUtils.tick();
 			}
 		}
