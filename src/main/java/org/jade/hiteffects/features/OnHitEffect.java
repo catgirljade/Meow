@@ -24,25 +24,21 @@ import org.jetbrains.annotations.Nullable;
 public class OnHitEffect {
 	private static final float[] TRIDENT_PITCH = {0.75f, 1f, 0.5f};
 	private static final float[] SWEEP_PITCH = {0.75f, 0.9f, 0.55f};
-	private final double STEP = Math.toRadians(30);
+	private static final double STEP = Math.toRadians(30);
 
-	Player player;
-	Level world;
-	InteractionHand hand;
-	Entity entity;
+	static Player player;
+	static Level world;
+	static InteractionHand hand;
+	static Entity entity;
+	private static int combo = 0;
 
-	HitUtils hitUtils;
-	private int combo = 0;
-
-	public OnHitEffect() {
-		this.player = HitEffectClient.mc.player;
-		this.hitUtils = new HitUtils();
-		AttackEntityCallback.EVENT.register(this::interact);
+	static ModConfig config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
+	public static void init() {
+		AttackEntityCallback.EVENT.register(OnHitEffect::interact);
 	}
 
-	void slashEffect() {
-		hitUtils.setPlayer(player);
-		boolean crit = hitUtils.can_hit();
+	static void slashEffect() {
+		boolean crit = HitUtils.can_hit();
 		double attack_weak = 1 - player.getAttackStrengthScale(0.0F);
 		BlockPos pos = new BlockPos(new Vec3i((int) entity.getX(), (int) entity.getY(), (int) entity.getZ()));
 		ModConfig config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
@@ -72,19 +68,20 @@ public class OnHitEffect {
 		combo %= 3;
 	}
 
-	private InteractionResult interact(Player mplayer, Level mworld, InteractionHand mhand, Entity mentity, @Nullable EntityHitResult mhitResult) {
-		ModConfig config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
+	private static InteractionResult interact(Player mplayer, Level mworld, InteractionHand mhand, Entity mentity, @Nullable EntityHitResult mhitResult) {
+		player = mplayer;
+		HitUtils.setPlayer(player);
 		if (!config.hit_effect) {
 			return InteractionResult.PASS;
 		}
-		this.entity = mentity;
-		if (this.entity instanceof LivingEntity && this.entity.isAlive()) {
-			this.player = mplayer;
-			this.world = mworld;
-			this.hand = mhand;
+		entity = mentity;
+		if (entity instanceof LivingEntity && entity.isAlive()) {
+			player = mplayer;
+			world = mworld;
+			hand = mhand;
 
 
-			this.slashEffect();
+			slashEffect();
 		}
 		return InteractionResult.PASS;
 	}

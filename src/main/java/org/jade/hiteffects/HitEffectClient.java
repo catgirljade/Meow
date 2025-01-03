@@ -29,14 +29,12 @@ public class HitEffectClient implements ClientModInitializer {
 		mc = Minecraft.getInstance();
 
 		load();
-
-
 	}
 
 	private void load() {
-		onHitEffect = new OnHitEffect();
 		ClientTickEvents.END_CLIENT_TICK.register(mc -> {
 			CallableManager.tick();
 		});
+		OnHitEffect.init();
 	}
 }

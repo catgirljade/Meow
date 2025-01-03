@@ -17,10 +17,10 @@ public class OnDeathEffect {
 	final static int angles[][]= {
 		{70, 45}, {70, -45}, {-70, -45}, {-70, 45}
 	};
+	static ModConfig config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
 
 	public static void createEffect(LivingEntity entity) {
 		Vec3 location = entity.position();
-		ModConfig config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
 
 		BlockPos loc = new BlockPos(new Vec3i((int) location.x, (int) location.y, (int) location.z));
 		if(config.kill_effect_volume > 0){
