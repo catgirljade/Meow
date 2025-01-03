@@ -5,8 +5,9 @@ import me.shedaniel.autoconfig.serializer.Toml4jConfigSerializer;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.minecraft.client.Minecraft;
+import org.apache.commons.compress.harmony.pack200.NewAttributeBands;
 import org.jade.hiteffects.features.OnHitEffect;
-import org.jade.hiteffects.util.EntityUtilManager;
+import org.jade.hiteffects.util.CallableManager;
 import org.jade.hiteffects.util.ModConfig;
 import org.jade.hiteffects.util.ParticleUtils;
 
@@ -35,8 +36,7 @@ public class HitEffectClient implements ClientModInitializer {
 	private void load() {
 		onHitEffect = new OnHitEffect();
 		ClientTickEvents.END_CLIENT_TICK.register(mc -> {
-			EntityUtilManager.tick();
-			ParticleUtils.tick();
+			CallableManager.tick();
 		});
 	}
 }

@@ -11,3 +11,5 @@
 /kill @e[type= minecraft:pig]
 /kill @e[type=minecraft:item]
 /kill @e[type= minecraft:pig]
+/enchant @p minecraft:knockback 2
+/enchant @p minecraft:sharpness 5

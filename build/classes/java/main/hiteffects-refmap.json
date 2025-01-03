@@ -1,15 +1,15 @@
 {
   "mappings": {
-    "org/jade/hiteffects/mixin/EntityRenderDispatcherMixin": {
-      "Lnet/minecraft/client/renderer/entity/EntityRenderer;render(Lnet/minecraft/world/entity/Entity;FFLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;I)V": "Lnet/minecraft/class_897;method_3936(Lnet/minecraft/class_1297;FFLnet/minecraft/class_4587;Lnet/minecraft/class_4597;I)V",
-      "render": "Lnet/minecraft/class_898;method_3954(Lnet/minecraft/class_1297;DDDFFLnet/minecraft/class_4587;Lnet/minecraft/class_4597;I)V"
+    "org/jade/hiteffects/mixin/LivingEntityMixin": {
+      "Lnet/minecraft/world/entity/LivingEntity;level()Lnet/minecraft/world/level/Level;": "Lnet/minecraft/class_1309;method_37908()Lnet/minecraft/class_1937;",
+      "die": "Lnet/minecraft/class_1309;method_6078(Lnet/minecraft/class_1282;)V"
     }
   },
   "data": {
     "named:intermediary": {
-      "org/jade/hiteffects/mixin/EntityRenderDispatcherMixin": {
-        "Lnet/minecraft/client/renderer/entity/EntityRenderer;render(Lnet/minecraft/world/entity/Entity;FFLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;I)V": "Lnet/minecraft/class_897;method_3936(Lnet/minecraft/class_1297;FFLnet/minecraft/class_4587;Lnet/minecraft/class_4597;I)V",
-        "render": "Lnet/minecraft/class_898;method_3954(Lnet/minecraft/class_1297;DDDFFLnet/minecraft/class_4587;Lnet/minecraft/class_4597;I)V"
+      "org/jade/hiteffects/mixin/LivingEntityMixin": {
+        "Lnet/minecraft/world/entity/LivingEntity;level()Lnet/minecraft/world/level/Level;": "Lnet/minecraft/class_1309;method_37908()Lnet/minecraft/class_1937;",
+        "die": "Lnet/minecraft/class_1309;method_6078(Lnet/minecraft/class_1282;)V"
       }
     }
   }

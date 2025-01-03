@@ -17,7 +17,7 @@ public class OnDeathEffect {
 	final static int angles[][]= {
 		{70, 45}, {70, -45}, {-70, -45}, {-70, 45}
 	};
-	// probably SHOULD NOT USE entity IN ANY COROUTINE/CALLABLE! (I want it to actually get deleted meow)
+
 	public static void createEffect(LivingEntity entity) {
 		Vec3 location = entity.position();
 		ModConfig config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();

@@ -6,7 +6,7 @@
   "mixins": [
   ],
   "client": [
-    "EntityRenderDispatcherMixin"
+    "LivingEntityMixin"
   ],
   "injectors": {
     "defaultRequire": 1

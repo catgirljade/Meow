@@ -221,19 +221,6 @@
     },
     "done": true
   },
-  "minecraft:adventure/root": {
-    "criteria": {
-      "killed_something": "2024-12-08 16:36:00 +0800"
-    },
-    "done": true
-  },
-  "minecraft:adventure/kill_all_mobs": {
-    "criteria": {
-      "minecraft:zoglin": "2024-12-08 16:36:47 +0800",
-      "minecraft:zombie": "2024-12-08 16:36:00 +0800"
-    },
-    "done": false
-  },
   "minecraft:recipes/decorations/chain": {
     "criteria": {
       "has_iron_ingot": "2024-12-08 16:35:31 +0800"
@@ -285,12 +272,6 @@
   "minecraft:recipes/food/cooked_porkchop_from_smoking": {
     "criteria": {
       "has_porkchop": "2024-12-08 16:35:31 +0800"
-    },
-    "done": true
-  },
-  "minecraft:adventure/kill_a_mob": {
-    "criteria": {
-      "minecraft:zombie": "2024-12-08 16:36:00 +0800"
     },
     "done": true
   },
@@ -354,5 +335,24 @@
     },
     "done": true
   },
-  "DataVersion": 3465
+  "minecraft:adventure/root": {
+    "criteria": {
+      "killed_something": "2024-12-08 16:36:00 +0800"
+    },
+    "done": true
+  },
+  "minecraft:adventure/kill_all_mobs": {
+    "criteria": {
+      "minecraft:zoglin": "2024-12-08 16:36:47 +0800",
+      "minecraft:zombie": "2024-12-08 16:36:00 +0800"
+    },
+    "done": false
+  },
+  "minecraft:adventure/kill_a_mob": {
+    "criteria": {
+      "minecraft:zombie": "2024-12-08 16:36:00 +0800"
+    },
+    "done": true
+  },
+  "DataVersion": 3700
 }

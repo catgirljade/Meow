@@ -3,13 +3,10 @@ package org.jade.hiteffects.util;
 import net.minecraft.world.phys.Vec3;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.Callable;
 
 public class ParticleUtils {
-	static List<Callable<Boolean>> current = new ArrayList<>();
-
 	public static void create_arc(CleaveAnimation func, double radius, int startingDegrees, int endingDegrees, float angle, float pitch, float yaw, double spacing, int arcInc, int rings) {
 		double radiusInc = (Math.PI / (endingDegrees - startingDegrees));
 
@@ -60,45 +57,31 @@ public class ParticleUtils {
 							1D - (point.distanceTo(Vec3.ZERO) / length), (double) (i + 1) / points.size(), middle);
 			}
 		} else {
-			current.add(new Callable<>() {
+			 CallableManager.addCallable(new Callable<>() {
 
-				final int mPointsPerTick = (int) (points.size() * (1D / duration));
-				int mT = 0;
-				boolean mMidReached = false;
+				 final int mPointsPerTick = (int) (points.size() * (1D / duration));
+				 int mT = 0;
+				 boolean mMidReached = false;
 
-				@Override
-				public Boolean call() {
-					for (int i = mPointsPerTick * mT; i < Math.min(points.size(), mPointsPerTick * (mT + 1)); i++) {
-						Vec3 point = points.get(i);
-						boolean middle = !mMidReached && i == points.size() / 2;
-						if (middle) {
-							mMidReached = true;
-						}
-						animation.lineSlashAnimation(point,
-									1D - (point.distanceTo(Vec3.ZERO) / length), (double) (i + 1) / points.size(), middle);
-					}
-					mT++;
+				 @Override
+				 public Boolean call() {
+					 for (int i = mPointsPerTick * mT; i < Math.min(points.size(), mPointsPerTick * (mT + 1)); i++) {
+						 Vec3 point = points.get(i);
+						 boolean middle = !mMidReached && i == points.size() / 2;
+						 if (middle) {
+							 mMidReached = true;
+						 }
+						 animation.lineSlashAnimation(point,
+									 1D - (point.distanceTo(Vec3.ZERO) / length), (double) (i + 1) / points.size(), middle);
+					 }
+					 mT++;
 
-					if (mT >= duration) {
-						return Boolean.TRUE;
-					}
-					return Boolean.FALSE;
-				}
-			});
-		}
-	}
-
-	public static void tick() {
-		for (Iterator<Callable<Boolean>> callableIterator = current.iterator(); callableIterator.hasNext(); ) {
-			Callable<Boolean> callable = callableIterator.next();
-			try {
-				boolean result = callable.call();
-				if (result){
-					callableIterator.remove();
-				}
-			} catch (Exception e) {
-				throw new RuntimeException(e);
-			}
+					 if (mT >= duration) {
+						 return Boolean.TRUE;
+					 }
+					 return Boolean.FALSE;
+				 }
+			 });
 		}
 	}
 
