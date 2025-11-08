@@ -26,23 +26,14 @@ public class OnHitEffect {
 	private static final float[] SWEEP_PITCH = {0.75f, 0.9f, 0.55f};
 	private final double STEP = Math.toRadians(30);
 
-	Player player;
-	Level world;
-	InteractionHand hand;
-	Entity entity;
-
-	HitUtils hitUtils;
 	private int combo = 0;
 
 	public OnHitEffect() {
-		this.player = HitEffectClient.mc.player;
-		this.hitUtils = new HitUtils();
 		AttackEntityCallback.EVENT.register(this::interact);
 	}
 
-	void slashEffect() {
-		hitUtils.setPlayer(player);
-		boolean crit = hitUtils.can_hit();
+	void slashEffect(Level world, Player player, Entity entity) {
+		boolean crit = HitUtils.canHit(player);
 		double attack_weak = 1 - player.getAttackStrengthScale(0.0F);
 		BlockPos pos = new BlockPos(new Vec3i((int) entity.getX(), (int) entity.getY(), (int) entity.getZ()));
 		ModConfig config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
@@ -60,29 +51,36 @@ public class OnHitEffect {
 		Vec3 eye_pos = player.getEyePosition();
 
 		ParticleUtils.create_arc((vec, radius) -> {
-						world.addParticle(new DustColorTransitionOptions(config.colourToVec(config.hit_colours_initial), config.colourToVec(config.hit_colours_final), 1),
-									eye_pos.x + vec.x, eye_pos.y + vec.y, eye_pos.z + vec.z, 0, 0, 0);
-					}, Math.max(eye_pos.distanceTo(entity.position().add(new Vec3(0, entity.getEyeHeight() / 2, 0))), 1.0f),
-					(int) (90 * attack_weak), (int) (180 - attack_weak * 90), (float) ((combo - 1) * STEP + Math.PI / 2),
-					(float) Math.toRadians(player.getXRot()), (float) Math.toRadians(player.getYRot()), config.spacing, (int) (180 * (1 - attack_weak)), 3);
+				world.addParticle(
+					new DustColorTransitionOptions(
+						config.colourToVec(config.hit_colours_initial),
+						config.colourToVec(config.hit_colours_final),
+						1),
+					eye_pos.x + vec.x, eye_pos.y + vec.y, eye_pos.z + vec.z, 0, 0, 0
+				);
+			},
+			Math.max(eye_pos.distanceTo(entity.position().add(new Vec3(0, entity.getEyeHeight() / 2, 0))), 1.0f),
+			(int) (90 * attack_weak),
+			(int) (180 - attack_weak * 90),
+			((combo - 1) * STEP + Math.PI / 2),
+			Math.toRadians(player.getXRot()),
+			Math.toRadians(player.getYRot()),
+			config.spacing,
+			(int) (180 * (1 - attack_weak)),
+			3
+		);
 
 		combo++;
 		combo %= 3;
 	}
 
-	private InteractionResult interact(Player mplayer, Level mworld, InteractionHand mhand, Entity mentity, @Nullable EntityHitResult mhitResult) {
+	private InteractionResult interact(Player player, Level world, InteractionHand hand, Entity entity, @Nullable EntityHitResult hitResult) {
 		ModConfig config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
-		if (!config.hit_effect){
+		if (!config.hit_effect) {
 			return InteractionResult.PASS;
 		}
-		this.entity = mentity;
-		if (this.entity instanceof LivingEntity && this.entity.isAlive()) {
-			this.player = mplayer;
-			this.world = mworld;
-			this.hand = mhand;
-
-
-			this.slashEffect();
+		if (entity instanceof LivingEntity && entity.isAlive() && !entity.isRemoved()) {
+			this.slashEffect(world, player, entity);
 		}
 		return InteractionResult.PASS;
 	}

@@ -10,7 +10,7 @@ import java.util.concurrent.Callable;
 public class ParticleUtils {
 	static List<Callable<Boolean>> current = new ArrayList<>();
 
-	public static void create_arc(CleaveAnimation func, double radius, int startingDegrees, int endingDegrees, float angle, float pitch, float yaw, double spacing, int arcInc, int rings) {
+	public static void create_arc(CleaveAnimation func, double radius, int startingDegrees, int endingDegrees, double angle, double pitch, double yaw, double spacing, int arcInc, int rings) {
 		double radiusInc = (Math.PI / (endingDegrees - startingDegrees));
 
 		double mPI = 0;
@@ -22,9 +22,9 @@ public class ParticleUtils {
 				double radian1 = Math.toRadians(d);
 				double radiusSpacing = Math.sin(mPI) * i;
 				vec = new Vec3(Math.cos(radian1) * (radius + radiusSpacing), 0, Math.sin(radian1) * (radius + radiusSpacing));
-				vec = vec.zRot(angle);
-				vec = vec.xRot(-pitch);
-				vec = vec.yRot(-yaw);
+				vec = vec.zRot((float) angle);
+				vec = vec.xRot((float) -pitch);
+				vec = vec.yRot((float) -yaw);
 
 				func.spawn_particle(vec, radius);
 				mPI += radiusInc * 2.5;
@@ -33,12 +33,12 @@ public class ParticleUtils {
 		}
 	}
 
-	public static void drawParticleLineSlash(LineSlashAnimation animation, float length, float angle, float pitch, float yaw, double spacing, int duration) {
+	public static void drawParticleLineSlash(LineSlashAnimation animation, double length, double angle, double pitch, double yaw, double spacing, int duration) {
 		List<Vec3> points = new ArrayList<>();
 		Vec3 vec = new Vec3(0, 0, 1);
-		vec = vec.zRot(angle);
-		vec = vec.xRot(pitch);
-		vec = vec.yRot(yaw);
+		vec = vec.zRot((float) angle);
+		vec = vec.xRot((float) pitch);
+		vec = vec.yRot((float) yaw);
 		vec = vec.normalize();
 
 		for (double ln = -length; ln < length; ln += spacing) {
@@ -57,7 +57,7 @@ public class ParticleUtils {
 					System.out.println(point);
 				}
 				animation.lineSlashAnimation(point,
-							1D - (point.distanceTo(Vec3.ZERO) / length), (double) (i + 1) / points.size(), middle);
+					1D - (point.distanceTo(Vec3.ZERO) / length), (double) (i + 1) / points.size(), middle);
 			}
 		} else {
 			current.add(new Callable<>() {
@@ -75,7 +75,7 @@ public class ParticleUtils {
 							mMidReached = true;
 						}
 						animation.lineSlashAnimation(point,
-									1D - (point.distanceTo(Vec3.ZERO) / length), (double) (i + 1) / points.size(), middle);
+							1D - (point.distanceTo(Vec3.ZERO) / length), (double) (i + 1) / points.size(), middle);
 					}
 					mT++;
 
@@ -93,7 +93,7 @@ public class ParticleUtils {
 			Callable<Boolean> callable = callableIterator.next();
 			try {
 				boolean result = callable.call();
-				if (result){
+				if (result) {
 					callableIterator.remove();
 				}
 			} catch (Exception e) {

@@ -15,8 +15,9 @@
     "client": [
       "org.jade.hiteffects.HitEffectClient"
     ],
-    "modmenu": [ "org.jade.hiteffects.util.ModMenuIntegration" ]
-
+    "modmenu": [
+      "org.jade.hiteffects.util.ModMenuIntegration"
+    ]
   },
   "mixins": [
     "meow.mixins.json"

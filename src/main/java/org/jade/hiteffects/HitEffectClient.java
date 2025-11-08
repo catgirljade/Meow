@@ -17,19 +17,16 @@ public class HitEffectClient implements ClientModInitializer {
 	 * Runs the mod initializer on the client environment.
 	 */
 
-	OnHitEffect onHitEffect;
+	private OnHitEffect onHitEffect;
 
 	@Override
 	public void onInitializeClient() {
-		System.out.println("Meow meow!");
-
 		AutoConfig.register(ModConfig.class, Toml4jConfigSerializer::new);
 
 		mc = Minecraft.getInstance();
-
 		load();
 
-
+		System.out.println("Meow meow!");
 	}
 
 	private void load() {

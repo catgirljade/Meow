@@ -3,21 +3,21 @@ package org.jade.hiteffects.util;
 import net.minecraft.world.entity.LivingEntity;
 import org.jade.hiteffects.features.OnDeathEffect;
 
-public class EntityUtils {
+public class EntityTracker {
 	LivingEntity entity;
 
-	EntityUtils(LivingEntity entity){
+	EntityTracker(LivingEntity entity) {
 		this.entity = entity;
 	}
 
-	public void tick(){
-		if (entity != null && !entity.isRemoved() && entity.getHealth() <= 0){
+	public void tick() {
+		if (entity != null && !entity.isRemoved() && entity.getHealth() <= 0) {
 			onDeath();
 			entity = null;
 		}
 	}
 
-	void onDeath(){
+	void onDeath() {
 		OnDeathEffect.createEffect(entity);
 	}
 }
